@@ -1,0 +1,44 @@
+<script>
+
+	var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// create Oscillator
+
+	var oscillator = audioCtx.createOscillator();
+		oscillator.type = 'sine';
+		oscillator.frequency.value = 300; // value in hertz
+		oscillator.start();
+	function startSound() {
+		console.log('startSound')
+		oscillator.connect(audioCtx.destination);	
+	}
+	function stopSound() {
+		console.log('stopSound')
+		oscillator.disconnect(audioCtx.destination);
+	}
+// create secondOscillator
+
+	var secondOscillator = audioCtx.createOscillator();
+		secondOscillator.type = 'sine';
+		secondOscillator.frequency.value = Math.floor(Math.random() * (500 - 900 + 1)) + 500; // value in hertz
+		secondOscillator.start();
+	function startSecondSound() {
+		console.log('startSound')
+		secondOscillator.frequency.value = Math.floor(Math.random() * (900 - 1500 + 1)) + 900; // value in hertz
+		secondOscillator.connect(audioCtx.destination);	
+	}
+	function stopSecondSound() {
+		console.log('stopSound')
+		secondOscillator.disconnect(audioCtx.destination);
+	}
+</script>
+
+<h1>thing</h1>
+<button onClick="startSound()">start osc</button>
+
+<button onClick="stopSound()">stop osc</button>
+
+<h1>second thing</h1>
+<button onClick="startSecondSound()">start osc</button>
+
+<button onClick="stopSecondSound()">stop osc</button>

@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template, send_from_directory
 
 # initialization
 app = Flask(__name__)
@@ -10,7 +10,7 @@ app.config.update(
 # controllers
 @app.route("/")
 def hello():
-    return "Hello from Danny and Timon!"
+    return render_template('index.html')
 
 # launch
 if __name__ == "__main__":
