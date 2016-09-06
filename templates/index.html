@@ -10,6 +10,7 @@
 		oscillator.start();
 	function startSound() {
 		console.log('startSound')
+		oscillator.frequency.value = Math.floor(Math.random() * (300 - 1000 + 1)) + 700; // value in hertz // value in hertzz
 		oscillator.connect(audioCtx.destination);	
 	}
 	function stopSound() {
@@ -31,9 +32,45 @@
 		console.log('stopSound')
 		secondOscillator.disconnect(audioCtx.destination);
 	}
+
+	function timeoutStart(){
+		console.log(timeoutStart)
+     window.onload = setInterval(function(){
+       startSound()
+    },1200);
+}
+
+	function timeoutSecondStart(){
+		console.log(timeoutStart)
+     window.onload = setInterval(function(){
+       startSecondSound()
+    },500);
+}
+
+	function repeatingSound() {
+		for (i = 0; i < 10; i++) {
+			console.log('this');
+			timeoutStart()
+			timeoutStop();	
+			console.log(i);
+		}
+	};
+	timeoutStart()
+	timeoutSecondStart()
+
+
+	// function timeoutStart(){
+	// 	console.log(timeoutStart)
+ //    	window.onload = setInterval(function(){
+ //        	setTimeout(startSound, 2000);
+	//         stopSound();
+ //    	}, 1200);
+ //    }	
 </script>
 
-<h1>thing</h1>
+<h1>Good luck</h1>
+
+<!-- <h1>thing</h1>
 <button onClick="startSound()">start osc</button>
 
 <button onClick="stopSound()">stop osc</button>
@@ -41,4 +78,4 @@
 <h1>second thing</h1>
 <button onClick="startSecondSound()">start osc</button>
 
-<button onClick="stopSecondSound()">stop osc</button>
+<button onClick="stopSecondSound()">stop osc</button> -->
